@@ -152,6 +152,10 @@ class Debugger(bdb.Bdb):
 
         self.setup_state()
 
+        sys.stdin = open(input, "r")
+        sys.stdout = open(output, 'w')
+        sys.stderr = open(error, 'w')
+
         if steal_output:
             raise NotImplementedError("output stealing")
             if PY3:
